@@ -1,0 +1,70 @@
+// Place all the styles related to the shows controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'colors';
+
+.shows {
+
+  #search_bar {
+    padding: 10px;
+    background-color: $orange;
+    label {
+      color: $deep-purple;
+      letter-spacing: 1.3px;
+    }
+  }
+
+  .results {
+    padding: 20px 0px;
+    h2 {
+      padding: 0;
+      color: $deep-purple;
+      font: {
+        size: 1.3em;
+      }
+    }
+
+    #column-heading {
+      .name {
+        padding-left: 30px;
+      }
+    }
+
+    .dynamic-results {
+      li {
+        padding: 10px;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    #column-result {
+      .format {
+        padding-left: 25px;
+      }
+      .rating {
+        padding-left: 25px;
+      }
+      // &:hover {
+      //   background-color: white;
+      // }
+    }
+  }
+
+  .section {
+    padding: 0;
+    margin: 0;
+  }
+
+  path {
+    stroke: #fff;
+    fill-rule: evenodd;
+  }
+
+  @media all and (max-width: 991px) {
+
+    #column-heading {
+      display: none;
+    }
+  }
+}

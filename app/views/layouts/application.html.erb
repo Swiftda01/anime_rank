@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AnimeRatings</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+  </head>
+
+  <body class="<%= controller.controller_name %>">
+    <header>
+    </header>
+    <main>
+      <%= render partial: "search" %>
+      <%= yield %>
+    </main>
+  </body>
+
+  <script>
+    $(function () {
+      var shows = [];
+      $("#name_search").autocomplete({
+        source: shows
+      }).
+      on("keyup", function (e) {
+        if (this.value.length >= 2) {
+          $.get("/shows.json?q=" + this.value, function (data) {
+            // AJAX AUTOCOMPLETE
+            // $("#name_search").autocomplete("option", "source", data);
+            $(".dynamic-results").empty();
+            for (var i = 0; i < data.length; i++) {
+              $(".dynamic-results").append(
+                `<li>
+                  <div id="column-result" class="row">
+                    <div class="col-md-4 name">${data[i].name}</div>
+                    <div class="col-md-3 format">${data[i].format}</div>
+                    <div class="col-md-3 rating">${data[i].rating}</div>
+                  </div>
+                </li>`
+              );
+            }
+          });
+        }
+      });
+      // NON-AJAX AUTOCOMPLETE
+      // $("#name_search").autocomplete({
+      //   max: 10,
+      //   source: function(request, response) {
+      //     var results = $.ui.autocomplete.filter(
+      //       <%#= Show.all.map(&:name).to_json.html_safe %>,
+      //       request.term
+      //     );
+      //     response(results.slice(0, 10));
+      //   }
+      // });
+    });
+  </script>
+</html>

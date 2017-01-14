@@ -1,0 +1,12 @@
+@import 'colors';
+
+header {
+  height: 200px;
+  background-image: url('banner.jpg');
+  background-size: cover;
+  background-position: 0px 255px;
+}
+
+body {
+  background-color: $light-orange;
+}

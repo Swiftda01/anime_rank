@@ -1,0 +1,17 @@
+<div id="search_bar" class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= form_tag("/shows", method: "get") do %>
+      <%= label_tag(:name_search, "Search by name:") %>
+      <%= text_field_tag(:name_search) %>
+      <%= submit_tag("Submit") %>
+    <% end %>
+  </div>
+</div>
+
+<!-- <br> -->
+
+<%#= form_tag("/shows/results", method: "get") do %>
+  <%#= label_tag(:genre_search, "Search by genre:") %>
+  <%#= select_tag(:genre_search, options_for_select(@genres.collect(&:name))) %>
+  <%#= submit_tag("Search") %>
+<%# end %>

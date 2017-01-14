@@ -1,0 +1,33 @@
+<div class="section">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <ul class="results">
+        <li>
+          <div id="column-heading" class="row">
+            <div class="col-md-4 name"><h2>Name</h2></div>
+            <div class="col-md-3 format"><h2>Format</h2></div>
+            <div class="col-md-3 rating"><h2>Rating</h2></div>
+          </div>
+        </li>
+        <div class="dynamic-results">
+          <% @shows.each do |result| %>
+            <li>
+              <div id="column-result" class="row">
+                <div class="col-md-4 name"><%= result.name.html_safe %></div>
+                <div class="col-md-3 format"><%= result.format %></div>
+                <div class="col-md-3 rating"><%= result.rating %></div>
+              </div>
+            </li>
+          <% end %>
+        </div>
+      </ul>
+ <!-- <%#= will_paginate @shows %> -->
+    </div>
+  </div>
+</div>
+
+<!-- <ul>
+  <%# @genre_results.each do |result| %>
+    <li><%#= result.name %></li>
+  <%# end %>
+</ul> -->
